@@ -7,7 +7,9 @@ defmodule MyList do
   # map values to something
   def reduce([], _func, total), do: total
   def reduce([item | items], func, total), do: reduce(items, func, func.(item, total))
-  def reduce([item | items], func), do: reduce(items, func, func.(item, 0))
   # reduce
-  def sum(items), do: reduce(items, fn(item, total)->item + total end)
+  def sum(items), do: reduce(items, fn(item, total)->item + total end, 0)
+  # sums items in list
+  def max(items), do: reduce(items, fn(item, total)->if item > total do item else total end end, 0)
+  # finds max in list
 end
