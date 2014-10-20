@@ -12,4 +12,7 @@ defmodule MyList do
   # sums items in list
   def max(items), do: reduce(items, fn(item, total)->if item > total do item else total end end, 0)
   # finds max in list
+  def generate_span(from, to) when from > to, do: []
+  def generate_span(from, to) when from <= to, do: [from | generate_span(from + 1, to)]
+  # span from to
 end
