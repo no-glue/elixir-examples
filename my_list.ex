@@ -25,4 +25,21 @@ defmodule MyList do
   end
   def filter(items, func), do: filter(items, func, [])
   # filter the list according a value
+  def is_prime(number) do
+    if number > 2 do
+      len(filter(generate_span(2, Float.floor(:math.sqrt(number))), fn(n)-> if rem(number, n) == 0 do true else false end end))
+    else
+      0
+    end
+  end
+  # check if number is prime
+  def primes(_from, _to, [], primes), do: primes
+  def primes(from, to, [item | items], primes) do
+    if is_prime(item) == 0 do
+      primes(from, to, items, [item | primes])
+    else
+      primes(from, to, items, primes)
+    end
+  end
+  def primes(from, to) when from <= to, do: primes(from, to, generate_span(from, to), [])
 end
