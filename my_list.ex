@@ -42,4 +42,5 @@ defmodule MyList do
     end
   end
   def primes(from, to) when from <= to, do: primes(from, to, generate_span(from, to), [])
+  # generate primes from to
 end
