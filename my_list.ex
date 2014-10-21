@@ -15,4 +15,14 @@ defmodule MyList do
   def generate_span(from, to) when from > to, do: []
   def generate_span(from, to) when from <= to, do: [from | generate_span(from + 1, to)]
   # span from to
+  def filter([], _func, remaining), do: remaining
+  def filter([item | items], func, remaining) do
+    if func.(item) do
+      filter(items, func, [item | remaining])
+    else
+      filter(items, func, remaining)
+    end
+  end
+  def filter(items, func), do: filter(items, func, [])
+  # filter the list according a value
 end
